@@ -7,452 +7,470 @@
 <meta name="description" content="Fintor is the AI-powered financial advisor built for your generation. Budget smarter, invest with confidence, and hit your goals — in English or Spanish.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
 <style>
   :root {
     --blue: #1A6BFF;
     --blue-dark: #1252CC;
     --blue-light: #EBF1FF;
-    --green: #00C48C;
-    --green-light: #E6FAF4;
-    --orange: #FF9500;
-    --orange-light: #FFF3E0;
-    --black: #0D1117;
-    --gray-1: #6B7280;
-    --gray-2: #9CA3AF;
-    --gray-3: #F3F4F6;
-    --gray-4: #F9FAFB;
+    --blue-mid: #4D8FFF;
+    --black: #0A0F1E;
+    --gray: #6B7280;
+    --gray-light: #F4F6FB;
     --white: #FFFFFF;
-    --border: #E5E7EB;
-    --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.1);
+    --green: #00C48C;
+    --border: #E5EAF2;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
 
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 40px; height: 64px;
-    background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
+    padding: 18px 48px;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
-
-  .nav-left { display: flex; align-items: center; gap: 40px; }
   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .logo-icon { width: 36px; height: 36px; background: var(--blue); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 800; }
-  .logo-text { font-size: 18px; font-weight: 800; color: var(--black); letter-spacing: -0.5px; }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-1); text-decoration: none; transition: color 0.15s; }
-  .nav-links a:hover { color: var(--black); }
-  .nav-right { display: flex; align-items: center; gap: 12px; }
-  .lang-btn { display: flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--white); font-size: 13px; font-weight: 600; color: var(--gray-1); cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; transition: all 0.15s; }
-  .lang-btn:hover { border-color: var(--blue); color: var(--blue); }
-  .nav-cta { padding: 9px 20px; background: var(--blue); color: var(--white); border: none; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none; display: inline-block; transition: background 0.15s, transform 0.1s; }
-  .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+  .nav-logo-icon { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #1A6BFF 0%, #00C48C 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .nav-logo-icon svg { width: 20px; height: 20px; }
+  .nav-logo-text { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 22px; color: #0D1A3A; letter-spacing: -0.3px; }
+  .nav-logo-tagline { font-size: 11px; color: var(--gray); font-weight: 400; margin-top: -2px; }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 15px; font-weight: 500; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .lang-toggle { display: flex; align-items: center; gap: 6px; background: var(--gray-light); border-radius: 20px; padding: 6px 14px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; color: var(--black); transition: background 0.2s; font-family: 'DM Sans', sans-serif; }
+  .lang-toggle:hover { background: var(--border); }
+  .nav-cta { background: var(--blue); color: var(--white) !important; padding: 10px 22px; border-radius: 10px; font-weight: 600 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
 
-  .hero { padding: 120px 40px 80px; max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-light); color: var(--blue); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 20px; }
-  .badge-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: blink 2s infinite; }
-  @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
-  .hero h1 { font-size: clamp(36px, 4vw, 54px); font-weight: 800; line-height: 1.08; letter-spacing: -2px; color: var(--black); margin-bottom: 20px; }
-  .hero h1 .blue { color: var(--blue); }
-  .hero-sub { font-size: 17px; line-height: 1.7; color: var(--gray-1); margin-bottom: 36px; max-width: 460px; }
-  .hero-form { display: flex; gap: 10px; margin-bottom: 12px; }
-  .hero-input { flex: 1; padding: 14px 18px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 15px; font-family: 'Plus Jakarta Sans', sans-serif; color: var(--black); outline: none; transition: border-color 0.15s; }
-  .hero-input::placeholder { color: var(--gray-2); }
-  .hero-input:focus { border-color: var(--blue); }
-  .hero-btn { padding: 14px 24px; background: var(--blue); color: white; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; white-space: nowrap; transition: background 0.15s; }
-  .hero-btn:hover { background: var(--blue-dark); }
-  .hero-success { display: none; color: var(--green); font-size: 14px; font-weight: 700; margin-bottom: 12px; }
-  .hero-note { font-size: 12px; color: var(--gray-2); }
-  .hero-stats { display: flex; gap: 32px; margin-top: 36px; padding-top: 36px; border-top: 1px solid var(--border); }
-  .stat-num { font-size: 24px; font-weight: 800; color: var(--black); letter-spacing: -1px; }
-  .stat-num .green { color: var(--green); }
-  .stat-label { font-size: 12px; color: var(--gray-2); font-weight: 500; margin-top: 2px; }
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 48px 80px; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, #ddeaff 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 90% 80%, #e8f0ff 0%, transparent 60%); z-index: 0; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; width: 100%; }
 
-  .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; height: 580px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-light); color: var(--blue); padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 24px; border: 1px solid #c4d7ff; }
+  .hero-badge .dot { width: 7px; height: 7px; background: var(--blue); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)} }
 
-  .phone { width: 255px; background: var(--black); border-radius: 36px; padding: 10px; box-shadow: 0 32px 80px rgba(0,0,0,0.2); position: absolute; z-index: 2; animation: floatMain 4s ease-in-out infinite; }
-  .phone.back { transform: translateX(85px) translateY(24px) rotate(6deg); z-index: 1; animation: floatBack 4s ease-in-out infinite; opacity: 0.8; }
-  @keyframes floatMain { 0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)} }
-  @keyframes floatBack { 0%,100%{transform:translateX(85px) translateY(24px) rotate(6deg)}50%{transform:translateX(85px) translateY(14px) rotate(6deg)} }
+  .hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(42px, 5vw, 68px); font-weight: 800; line-height: 1.05; letter-spacing: -1px; color: var(--black); margin-bottom: 24px; }
+  .hero h1 .accent { color: var(--blue); }
+  .hero-sub { font-size: 18px; line-height: 1.7; color: var(--gray); font-weight: 400; max-width: 480px; margin-bottom: 32px; }
 
-  .phone-screen { background: white; border-radius: 28px; overflow: hidden; height: 510px; display: flex; flex-direction: column; }
-  .notch-bar { background: var(--black); height: 26px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; border-radius: 28px 28px 0 0; }
-  .notch { width: 70px; height: 15px; background: var(--black); border-radius: 0 0 10px 10px; }
-  .sc { flex: 1; padding: 14px 13px; display: flex; flex-direction: column; gap: 11px; overflow: hidden; }
-  .sc-hdr { display: flex; align-items: center; justify-content: space-between; }
-  .sc-logo { display: flex; align-items: center; gap: 5px; }
-  .sc-logo-icon { width: 22px; height: 22px; background: var(--blue); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 9px; font-weight: 800; }
-  .sc-logo-text { font-size: 13px; font-weight: 800; color: var(--black); }
-  .sc-gear { width: 26px; height: 26px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
-  .sc-greeting { font-size: 12px; font-weight: 500; color: var(--black); }
-  .score-row { display: flex; gap: 9px; }
-  .score-card { flex: 1.6; background: var(--gray-4); border-radius: 13px; padding: 11px; border: 1px solid var(--border); }
-  .sc-label { font-size: 8px; font-weight: 700; color: var(--gray-1); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
-  .score-num { font-size: 26px; font-weight: 800; color: var(--green); letter-spacing: -1px; }
-  .score-bar { height: 3px; background: var(--green); border-radius: 2px; margin: 5px 0; }
-  .score-ex { font-size: 9px; font-weight: 700; color: var(--green); }
-  .streak-card { flex: 1; background: var(--orange-light); border-radius: 13px; padding: 11px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #FFE0A0; }
-  .streak-fire { font-size: 18px; }
-  .streak-num { font-size: 20px; font-weight: 800; color: var(--black); }
-  .streak-lbl { font-size: 8px; color: var(--gray-1); font-weight: 500; text-align: center; }
-  .streak-sub { font-size: 8px; color: var(--orange); font-weight: 700; }
-  .insight-card { background: var(--blue-light); border-radius: 13px; padding: 11px; border: 1px solid #C4D7FF; }
-  .insight-lbl { font-size: 8px; font-weight: 700; color: var(--blue); margin-bottom: 3px; }
-  .insight-txt { font-size: 10px; color: var(--black); line-height: 1.5; font-weight: 500; }
-  .action-card { background: var(--black); border-radius: 13px; padding: 11px 13px; display: flex; align-items: center; justify-content: space-between; gap: 7px; }
-  .action-lbl { font-size: 8px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
-  .action-txt { font-size: 10px; color: white; line-height: 1.5; }
-  .action-arr { color: var(--green); font-size: 14px; flex-shrink: 0; }
-  .sc-tabs { display: flex; justify-content: space-around; padding: 7px 0 4px; border-top: 1px solid var(--border); }
-  .tab-i { text-align: center; font-size: 8px; color: var(--gray-2); font-weight: 500; }
-  .tab-i.active { color: var(--blue); font-weight: 700; }
-  .tab-icon { font-size: 13px; display: block; margin-bottom: 1px; }
+  /* CHANGE 1: Feature bullets instead of stats */
+  .hero-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+  .hero-feat { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--black); font-weight: 500; }
+  .hero-feat-icon { width: 32px; height: 32px; background: var(--blue-light); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .hero-feat strong { font-weight: 700; }
 
-  .port-sc { flex: 1; padding: 14px 13px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
-  .port-lbl { font-size: 8px; font-weight: 700; color: var(--gray-1); text-transform: uppercase; letter-spacing: 0.5px; }
-  .port-val { font-size: 22px; font-weight: 800; color: var(--black); letter-spacing: -1px; }
-  .port-gain { display: inline-block; background: var(--green-light); color: var(--green); font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 5px; }
-  .donut { width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(var(--green) 0deg 340deg, var(--border) 340deg 360deg); display: flex; align-items: center; justify-content: center; position: relative; }
-  .donut::after { content:''; position: absolute; width: 44px; height: 44px; background: white; border-radius: 50%; }
-  .holding { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
-  .holding-name { font-size: 11px; font-weight: 700; color: var(--black); }
-  .holding-sub { font-size: 9px; color: var(--gray-2); }
-  .holding-val { font-size: 11px; font-weight: 700; color: var(--black); text-align: right; }
-  .holding-gain { font-size: 9px; color: var(--green); font-weight: 600; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-primary { background: var(--blue); color: var(--white); padding: 16px 32px; border-radius: 12px; font-size: 16px; font-weight: 600; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.1s; font-family: 'DM Sans', sans-serif; }
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: var(--black); padding: 16px 28px; border-radius: 12px; font-size: 16px; font-weight: 500; border: 1.5px solid var(--border); cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.2s, transform 0.1s; font-family: 'DM Sans', sans-serif; }
+  .btn-secondary:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
 
-  .section { max-width: 1160px; margin: 0 auto; padding: 80px 40px; }
-  .section-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 20px; margin-bottom: 16px; }
-  .section-title { font-size: clamp(28px, 3vw, 40px); font-weight: 800; letter-spacing: -1.5px; color: var(--black); margin-bottom: 12px; line-height: 1.1; }
-  .section-sub { font-size: 16px; color: var(--gray-1); line-height: 1.7; max-width: 520px; }
+  .hero-trust { display: flex; align-items: center; gap: 12px; margin-top: 32px; }
+  .trust-avatars { display: flex; }
+  .trust-avatars span { width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; margin-left: -8px; }
+  .trust-avatars span:first-child { margin-left: 0; background: #4D8FFF; }
+  .trust-avatars span:nth-child(2) { background: #1A6BFF; }
+  .trust-avatars span:nth-child(3) { background: #1252CC; }
+  .trust-text { font-size: 13px; color: var(--gray); font-weight: 500; }
+  .trust-text strong { color: var(--black); }
 
-  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
-  .feat-card { background: var(--gray-4); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: transform 0.2s, box-shadow 0.2s; }
-  .feat-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); }
-  .feat-card.blue { background: var(--blue); border-color: var(--blue); }
-  .feat-card.blue .feat-title { color: white; }
-  .feat-card.blue .feat-text { color: rgba(255,255,255,0.75); }
-  .feat-card.blue .feat-icon { background: rgba(255,255,255,0.15); }
-  .feat-icon { width: 44px; height: 44px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 18px; }
-  .feat-title { font-size: 17px; font-weight: 700; color: var(--black); margin-bottom: 8px; letter-spacing: -0.3px; }
-  .feat-text { font-size: 14px; color: var(--gray-1); line-height: 1.6; }
+  /* PHONE */
+  .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
+  .phone-wrap { position: relative; animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)} }
+  .phone { width: 280px; background: var(--black); border-radius: 40px; padding: 12px; box-shadow: 0 40px 80px rgba(26,107,255,0.25), 0 20px 40px rgba(0,0,0,0.15); position: relative; z-index: 2; }
+  .phone-inner { background: #F8FAFF; border-radius: 30px; overflow: hidden; height: 540px; display: flex; flex-direction: column; }
+  .phone-status { background: var(--black); height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 28px 28px 0 0; }
+  .phone-notch { width: 80px; height: 18px; background: var(--black); border-radius: 0 0 12px 12px; }
+  .phone-screen { flex: 1; padding: 20px 16px; background: white; display: flex; flex-direction: column; gap: 14px; }
+  .ps-header { display: flex; align-items: center; justify-content: space-between; }
+  .ps-greeting { font-size: 12px; color: var(--gray); font-weight: 500; }
+  .ps-name { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; color: var(--black); }
+  .ps-avatar { width: 36px; height: 36px; background: var(--blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 14px; }
+  .ps-card { background: linear-gradient(135deg, var(--blue) 0%, #3B7AFF 100%); border-radius: 16px; padding: 18px; color: white; }
+  .ps-card-label { font-size: 11px; opacity: 0.75; margin-bottom: 4px; }
+  .ps-card-amount { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; margin-bottom: 12px; }
+  .ps-card-row { display: flex; gap: 16px; }
+  .ps-card-stat { font-size: 11px; opacity: 0.85; }
+  .ps-card-stat strong { display: block; font-size: 13px; font-weight: 700; opacity: 1; }
+  .ps-streak { display: flex; align-items: center; gap: 8px; background: #FFF8EC; border-radius: 10px; padding: 10px 14px; border: 1px solid #FFE4A0; }
+  .streak-icon { font-size: 18px; }
+  .streak-text { font-size: 12px; font-weight: 600; color: #B45309; }
+  .ps-tip { background: var(--blue-light); border-radius: 12px; padding: 12px 14px; border-left: 3px solid var(--blue); }
+  .ps-tip-label { font-size: 10px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .ps-tip-text { font-size: 12px; color: var(--black); line-height: 1.5; }
+  .ps-tabs { display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid var(--border); margin-top: auto; }
+  .ps-tab { font-size: 10px; color: var(--gray); text-align: center; font-weight: 500; }
+  .ps-tab.active { color: var(--blue); font-weight: 700; }
+  .ps-tab-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+  .phone-glow { position: absolute; inset: -20px; background: radial-gradient(ellipse at center, rgba(26,107,255,0.15) 0%, transparent 70%); z-index: 1; border-radius: 60px; }
+  .floating-card { position: absolute; background: white; border-radius: 14px; padding: 12px 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 3; border: 1px solid var(--border); }
+  .fc-left { left: -60px; top: 80px; animation: float2 3s ease-in-out infinite; animation-delay: 0.5s; }
+  .fc-right { right: -50px; bottom: 100px; animation: float3 3s ease-in-out infinite; animation-delay: 1s; }
+  @keyframes float2 { 0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(-2deg)} }
+  @keyframes float3 { 0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-8px) rotate(2deg)} }
+  .fc-icon { font-size: 20px; margin-bottom: 4px; }
+  .fc-label { font-size: 10px; color: var(--gray); font-weight: 500; }
+  .fc-value { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 800; color: var(--black); }
+  .fc-sub { font-size: 10px; color: var(--green); font-weight: 600; }
 
-  .compare-section { background: var(--gray-4); padding: 80px 0; }
-  .compare-inner { max-width: 1160px; margin: 0 auto; padding: 0 40px; }
-  .compare-table-wrap { margin-top: 48px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); background: white; }
-  table { width: 100%; border-collapse: collapse; }
-  thead th { padding: 18px 24px; text-align: left; font-size: 14px; font-weight: 700; background: var(--gray-4); border-bottom: 1px solid var(--border); color: var(--gray-1); }
-  thead th.col-f { background: var(--blue); color: white; font-size: 15px; }
-  tbody td { padding: 16px 24px; font-size: 14px; border-bottom: 1px solid var(--border); color: var(--gray-1); vertical-align: middle; }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody td:first-child { font-weight: 600; color: var(--black); }
-  tbody td.col-f { background: #F0F6FF; font-weight: 700; color: var(--blue); }
-  .chk { color: var(--green); font-weight: 700; }
-  .crs { color: #EF4444; }
-  .par { color: var(--orange); font-size: 13px; font-weight: 600; }
+  /* SECTIONS */
+  section { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
+  .section-tag { display: inline-block; background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 16px; }
+  .section-title { font-family: 'Outfit', sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.5px; color: var(--black); margin-bottom: 16px; line-height: 1.1; }
+  .section-sub { font-size: 18px; color: var(--gray); line-height: 1.7; max-width: 560px; }
 
-  .waitlist-section { max-width: 1160px; margin: 0 auto; padding: 80px 40px; }
-  .waitlist-card { background: var(--black); border-radius: 28px; padding: 72px 64px; text-align: center; position: relative; overflow: hidden; }
-  .waitlist-card::before { content:''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(26,107,255,0.3) 0%, transparent 70%); }
-  .waitlist-card * { position: relative; z-index: 1; }
-  .waitlist-card .section-tag { background: rgba(26,107,255,0.2); color: #7EB3FF; border: 1px solid rgba(26,107,255,0.25); }
-  .waitlist-card .section-title { color: white; }
-  .waitlist-card .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 40px; }
-  .waitlist-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; }
-  .waitlist-input { flex: 1; padding: 14px 18px; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 12px; background: rgba(255,255,255,0.08); color: white; font-size: 15px; font-family: 'Plus Jakarta Sans', sans-serif; outline: none; transition: border-color 0.15s; }
-  .waitlist-input::placeholder { color: rgba(255,255,255,0.35); }
-  .waitlist-input:focus { border-color: var(--blue); }
-  .waitlist-btn { padding: 14px 24px; background: var(--blue); color: white; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; white-space: nowrap; transition: background 0.15s; }
-  .waitlist-btn:hover { background: #3B7AFF; }
-  .waitlist-success { display: none; color: var(--green); font-size: 15px; font-weight: 700; margin-top: 16px; }
-  .waitlist-note { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 14px; }
+  /* FEATURES */
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+  .feature-card { background: var(--gray-light); border-radius: 20px; padding: 32px; border: 1px solid var(--border); transition: transform 0.2s, box-shadow 0.2s; }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,107,255,0.1); }
+  .feature-card.featured { background: var(--blue); border-color: var(--blue); color: white; }
+  .feature-card.featured .feature-title { color: white; }
+  .feature-card.featured .feature-text { color: rgba(255,255,255,0.8); }
+  .feature-card.featured .feature-icon { background: rgba(255,255,255,0.15); }
+  .feature-icon { width: 48px; height: 48px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
+  .feature-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: var(--black); margin-bottom: 10px; }
+  .feature-text { font-size: 15px; line-height: 1.65; color: var(--gray); }
 
-  footer { border-top: 1px solid var(--border); padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; max-width: 1160px; margin: 0 auto; }
-  .footer-logo { display: flex; align-items: center; gap: 8px; }
-  .footer-logo-icon { width: 28px; height: 28px; background: var(--blue); border-radius: 7px; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 800; }
-  .footer-logo-text { font-size: 15px; font-weight: 800; color: var(--black); }
-  .footer-links { display: flex; gap: 24px; list-style: none; }
-  .footer-links a { font-size: 13px; color: var(--gray-1); text-decoration: none; transition: color 0.15s; }
+  /* COMPARISON */
+  .comparison-wrap { margin-top: 60px; border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+  .comparison-table { width: 100%; border-collapse: collapse; }
+  .comparison-table th { padding: 20px 24px; text-align: left; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; background: var(--gray-light); border-bottom: 1px solid var(--border); }
+  .comparison-table th.highlight { background: var(--blue); color: white; }
+  .comparison-table td { padding: 18px 24px; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--gray); vertical-align: middle; }
+  .comparison-table tr:last-child td { border-bottom: none; }
+  .comparison-table td:first-child { font-weight: 600; color: var(--black); }
+  .comparison-table td.highlight { background: #F0F5FF; font-weight: 600; color: var(--blue); }
+  .comparison-table tr:hover td { background: #FAFBFF; }
+  .comparison-table tr:hover td.highlight { background: #E8F0FF; }
+  .check { color: var(--green); font-size: 18px; }
+  .cross { color: #E5362A; font-size: 18px; }
+  .partial { color: #F59E0B; font-size: 14px; font-weight: 600; }
+
+  /* WAITLIST */
+  .waitlist-section { background: var(--black); border-radius: 32px; padding: 80px 64px; text-align: center; margin: 0 48px 100px; position: relative; overflow: hidden; }
+  .waitlist-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(26,107,255,0.3) 0%, transparent 70%); }
+  .waitlist-section * { position: relative; z-index: 1; }
+  .waitlist-section .section-tag { background: rgba(26,107,255,0.2); color: #7EB3FF; border: 1px solid rgba(26,107,255,0.3); }
+  .waitlist-section .section-title { color: white; }
+  .waitlist-section .section-sub { color: rgba(255,255,255,0.65); margin: 0 auto 40px; }
+  .waitlist-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
+  .waitlist-input { flex: 1; padding: 16px 20px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: white; font-size: 15px; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s; }
+  .waitlist-input::placeholder { color: rgba(255,255,255,0.4); }
+  .waitlist-input:focus { border-color: var(--blue-mid); }
+  .waitlist-btn { background: var(--blue); color: white; padding: 16px 28px; border-radius: 12px; border: none; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; white-space: nowrap; }
+  .waitlist-btn:hover { background: var(--blue-mid); }
+  .waitlist-note { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 16px; }
+  .waitlist-success { display: none; color: var(--green); font-size: 16px; font-weight: 600; margin-top: 16px; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-icon { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #1A6BFF 0%, #00C48C 100%); display: flex; align-items: center; justify-content: center; }
+  .footer-logo-icon svg { width: 16px; height: 16px; }
+  .footer-logo-text { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 18px; color: #0D1A3A; }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--blue); }
-  .footer-disc { width: 100%; font-size: 12px; color: var(--gray-2); line-height: 1.6; padding-top: 16px; border-top: 1px solid var(--border); }
+  .footer-disclaimer { width: 100%; font-size: 12px; color: var(--gray); line-height: 1.6; border-top: 1px solid var(--border); padding-top: 20px; margin-top: 4px; }
 
-  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 900px) {
-    nav { padding: 0 20px; }
+    nav { padding: 16px 24px; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 100px 20px 60px; gap: 48px; }
-    .hero-visual { height: 400px; }
-    .phone.back { display: none; }
-    .section { padding: 60px 20px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { order: -1; }
+    .floating-card { display: none; }
+    section { padding: 60px 24px; }
     .features-grid { grid-template-columns: 1fr; }
-    .compare-inner { padding: 0 20px; }
-    .waitlist-section { padding: 60px 20px; }
-    .waitlist-card { padding: 48px 24px; }
+    .waitlist-section { margin: 0 24px 60px; padding: 48px 28px; }
     .waitlist-form { flex-direction: column; }
-    footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    footer { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-left">
-    <a href="#" class="nav-logo">
-      <div class="logo-icon">F</div>
-      <span class="logo-text">Fintor</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#features" data-en="Features" data-es="Funciones">Features</a></li>
-      <li><a href="#compare" data-en="Compare" data-es="Comparar">Compare</a></li>
-    </ul>
-  </div>
-  <div class="nav-right">
-    <button class="lang-btn" onclick="toggleLang()" id="langBtn">🌐 Español</button>
-    <a href="#waitlist" class="nav-cta" data-en="Join Waitlist" data-es="Únete">Join Waitlist</a>
-  </div>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="3,17 8,11 13,14 21,5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="17,5 21,5 21,9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="nav-logo-text">Fintor</div>
+      <div class="nav-logo-tagline">Your AI financial mentor.</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features" data-en="Features" data-es="Funciones">Features</a></li>
+    <li><a href="#compare" data-en="Compare" data-es="Comparar">Compare</a></li>
+    <li><a href="#waitlist" class="nav-cta" data-en="Join Waitlist" data-es="Únete">Join Waitlist</a></li>
+  </ul>
+  <button class="lang-toggle" onclick="toggleLang()" id="langBtn">🌐 Español</button>
 </nav>
 
-<div class="hero">
-  <div>
-    <div class="hero-badge"><span class="badge-dot"></span><span data-en="Now in Beta · iOS" data-es="Ahora en Beta · iOS">Now in Beta · iOS</span></div>
-    <h1 data-en="The <span class='blue'>AI advisor</span> your bank won't give you." data-es="El <span class='blue'>asesor de IA</span> que tu banco no te dará.">The <span class="blue">AI advisor</span> your bank won't give you.</h1>
-    <p class="hero-sub" data-en="Fintor is the personal finance app built for your generation. Get daily AI coaching, track your portfolio, and build real wealth — in English or Spanish." data-es="Fintor es la app de finanzas personales creada para tu generación. Recibe coaching de IA diario, monitorea tu portafolio y construye riqueza real — en inglés o español.">Fintor is the personal finance app built for your generation. Get daily AI coaching, track your portfolio, and build real wealth — in English or Spanish.</p>
-    <div class="hero-form">
-      <input type="email" class="hero-input" id="heroEmail" placeholder="your@email.com" />
-      <button class="hero-btn" onclick="submitHero()" data-en="Get Early Access" data-es="Acceso Anticipado">Get Early Access</button>
-    </div>
-    <div class="hero-success" id="heroSuccess">✓ <span data-en="You're on the list!" data-es="¡Estás en la lista!">You're on the list!</span></div>
-    <p class="hero-note" data-en="Free to join · No credit card required · Launching on iOS" data-es="Gratis · Sin tarjeta de crédito · Lanzando en iOS">Free to join · No credit card required · Launching on iOS</p>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num"><span class="green">100</span></div><div class="stat-label" data-en="Max Money Score" data-es="Puntuación Máxima">Max Money Score</div></div>
-      <div class="stat"><div class="stat-num">4</div><div class="stat-label" data-en="Core Features" data-es="Funciones Principales">Core Features</div></div>
-      <div class="stat"><div class="stat-num">2</div><div class="stat-label" data-en="Languages" data-es="Idiomas">Languages</div></div>
-    </div>
-  </div>
+<!-- HERO -->
+<section class="hero" style="max-width:100%;padding-left:0;padding-right:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span data-en="Now in Beta · iOS App" data-es="Ahora en Beta · App iOS">Now in Beta · iOS App</span>
+      </div>
+      <h1>
+        <span data-en="Your Money.<br>Your <span class='accent'>Mentor.</span><br>Your Language." data-es="Tu Dinero.<br>Tu <span class='accent'>Mentor.</span><br>Tu Idioma.">Your Money.<br>Your <span class="accent">Mentor.</span><br>Your Language.</span>
+      </h1>
+      <p class="hero-sub" data-en="Fintor is the AI-powered financial advisor that gives you a personalized plan, daily coaching, and real-time portfolio tracking — in English or Spanish." data-es="Fintor es el asesor financiero con IA que te da un plan personalizado, coaching diario y seguimiento de portafolio en tiempo real — en inglés o español.">
+        Fintor is the AI-powered financial advisor that gives you a personalized plan, daily coaching, and real-time portfolio tracking — in English or Spanish.
+      </p>
 
-  <div class="hero-visual">
-    <!-- Back phone: Portfolio -->
-    <div class="phone back">
-      <div class="phone-screen">
-        <div class="notch-bar"><div class="notch"></div></div>
-        <div class="port-sc">
-          <div class="sc-hdr">
-            <div class="sc-logo"><div class="sc-logo-icon">F</div><span class="sc-logo-text">Fintor</span></div>
-            <div class="sc-gear">⚙️</div>
-          </div>
-          <div>
-            <div class="port-lbl">TOTAL PORTFOLIO VALUE</div>
-            <div class="port-val">$65,524.00</div>
-            <span class="port-gain">+$35,524 (+118.41%)</span>
-          </div>
-          <div class="donut"></div>
-          <div class="holding">
-            <div><div class="holding-name">SPY</div><div class="holding-sub">100 shares · ETF</div></div>
-            <div><div class="holding-val">$65,524</div><div class="holding-gain">+118.41%</div></div>
-          </div>
+      <!-- CHANGE 1: Feature bullets replacing the old stats row -->
+      <div class="hero-features">
+        <div class="hero-feat">
+          <div class="hero-feat-icon">🤖</div>
+          <span data-en="<strong>AI Financial Advisor</strong> — ask anything, get personalized answers" data-es="<strong>Asesor Financiero IA</strong> — pregunta lo que quieras, obtén respuestas personalizadas"><strong>AI Financial Advisor</strong> — ask anything, get personalized answers</span>
         </div>
-        <div class="sc-tabs">
-          <div class="tab-i"><span class="tab-icon">🏠</span>Home</div>
-          <div class="tab-i"><span class="tab-icon">💰</span>Budget</div>
-          <div class="tab-i"><span class="tab-icon">🤖</span>Advisor</div>
-          <div class="tab-i active"><span class="tab-icon">📈</span>Portfolio</div>
+        <div class="hero-feat">
+          <div class="hero-feat-icon">📋</div>
+          <span data-en="<strong>AI-Built Financial Plan</strong> — 7-section plan tailored to your goals" data-es="<strong>Plan Financiero con IA</strong> — plan de 7 secciones adaptado a tus metas"><strong>AI-Built Financial Plan</strong> — 7-section plan tailored to your goals</span>
         </div>
+        <div class="hero-feat">
+          <div class="hero-feat-icon">🔥</div>
+          <span data-en="<strong>Daily Streak & Coaching</strong> — build real financial habits every day" data-es="<strong>Racha y Coaching Diario</strong> — construye hábitos financieros reales cada día"><strong>Daily Streak & Coaching</strong> — build real financial habits every day</span>
+        </div>
+        <div class="hero-feat">
+          <div class="hero-feat-icon">🌐</div>
+          <span data-en="<strong>Fully Bilingual</strong> — English & Spanish, natively built in" data-es="<strong>100% Bilingüe</strong> — inglés y español, construido de forma nativa"><strong>Fully Bilingual</strong> — English & Spanish, natively built in</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn-primary" data-en="Join the Waitlist" data-es="Únete a la Lista">Join the Waitlist</a>
+        <a href="#features" class="btn-secondary" data-en="See How It Works" data-es="Cómo Funciona">See How It Works</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-avatars"><span>J</span><span>M</span><span>A</span></div>
+        <p class="trust-text"><span data-en="<strong>Early testers</strong> from UT Austin & beyond waiting" data-es="<strong>Primeros testers</strong> de UT Austin y más esperando"><strong>Early testers</strong> from UT Austin & beyond waiting</span></p>
       </div>
     </div>
 
-    <!-- Front phone: Home screen -->
-    <div class="phone">
-      <div class="phone-screen">
-        <div class="notch-bar"><div class="notch"></div></div>
-        <div class="sc">
-          <div class="sc-hdr">
-            <div class="sc-logo"><div class="sc-logo-icon">F</div><span class="sc-logo-text">Fintor</span></div>
-            <div class="sc-gear">⚙️</div>
-          </div>
-          <div class="sc-greeting" id="phoneGreeting">Good evening, Jackson 👋</div>
-          <div class="score-row">
-            <div class="score-card">
-              <div class="sc-label">MONEY SCORE</div>
-              <div class="score-num">100</div>
-              <div class="score-bar"></div>
-              <div class="score-ex">Excellent</div>
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <div class="phone-glow"></div>
+        <div class="phone">
+          <div class="phone-inner">
+            <div class="phone-status"><div class="phone-notch"></div></div>
+            <div class="phone-screen">
+              <div class="ps-header">
+                <div>
+                  <div class="ps-greeting" id="ps-greeting">Good morning 👋</div>
+                  <div class="ps-name">Jackson</div>
+                </div>
+                <div class="ps-avatar">J</div>
+              </div>
+              <div class="ps-card">
+                <div class="ps-card-label" id="ps-balance-label">Net Worth</div>
+                <div class="ps-card-amount">$12,430</div>
+                <div class="ps-card-row">
+                  <div class="ps-card-stat"><strong>$3,200</strong><span id="ps-savings-label">Savings</span></div>
+                  <div class="ps-card-stat"><strong id="ps-streak-card">🔥 7 Day Streak</strong><span id="ps-streak-label">Keep it up!</span></div>
+                </div>
+              </div>
+              <div class="ps-streak">
+                <span class="streak-icon">⚡</span>
+                <span class="streak-text" id="ps-action">Today's action: Review your budget</span>
+              </div>
+              <div class="ps-tip">
+                <div class="ps-tip-label" id="ps-tip-label">AI Tip</div>
+                <div class="ps-tip-text" id="ps-tip-text">You're on track to save $400 this month. Consider moving $100 to your Roth IRA.</div>
+              </div>
+              <div class="ps-tabs">
+                <div class="ps-tab active"><span class="ps-tab-icon">🏠</span><span id="tab-home">Home</span></div>
+                <div class="ps-tab"><span class="ps-tab-icon">💰</span><span id="tab-budget">Budget</span></div>
+                <div class="ps-tab"><span class="ps-tab-icon">🤖</span><span id="tab-advisor">Advisor</span></div>
+                <div class="ps-tab"><span class="ps-tab-icon">📈</span><span id="tab-portfolio">Portfolio</span></div>
+              </div>
             </div>
-            <div class="streak-card">
-              <div class="streak-fire">🔥</div>
-              <div class="streak-num">7</div>
-              <div class="streak-lbl" id="streakLbl">day streak</div>
-              <div class="streak-sub" id="streakSub">Keep it up!</div>
-            </div>
-          </div>
-          <div class="insight-card">
-            <div class="insight-lbl" id="insightLbl">💡 TODAY'S INSIGHT · AI</div>
-            <div class="insight-txt" id="insightTxt">Automate emergency fund contributions to avoid spending that money on non-essential purchases.</div>
-          </div>
-          <div class="action-card">
-            <div>
-              <div class="action-lbl" id="actionLbl">✦ TODAY'S ACTION · AI</div>
-              <div class="action-txt" id="actionTxt">Open high-yield savings account and automatically transfer $1,500 monthly until reaching $7,500 emergency fund.</div>
-            </div>
-            <div class="action-arr">→</div>
           </div>
         </div>
-        <div class="sc-tabs">
-          <div class="tab-i active"><span class="tab-icon">🏠</span><span id="tabHome">Home</span></div>
-          <div class="tab-i"><span class="tab-icon">💰</span><span id="tabBudget">Budget</span></div>
-          <div class="tab-i"><span class="tab-icon">🤖</span><span id="tabAdvisor">Advisor</span></div>
-          <div class="tab-i"><span class="tab-icon">📈</span><span id="tabPortfolio">Portfolio</span></div>
+        <div class="floating-card fc-left">
+          <div class="fc-icon">📈</div>
+          <div class="fc-label">Portfolio</div>
+          <div class="fc-value">+12.4%</div>
+          <div class="fc-sub">↑ This year</div>
+        </div>
+        <div class="floating-card fc-right">
+          <div class="fc-icon">🎯</div>
+          <div class="fc-label">Goal Progress</div>
+          <div class="fc-value">67%</div>
+          <div class="fc-sub">Emergency Fund</div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- FEATURES -->
-<section class="section" id="features">
-  <div class="fade-up">
-    <span class="section-tag">✦ <span data-en="Features" data-es="Funciones">Features</span></span>
-    <h2 class="section-title" data-en="Everything you need to win with money." data-es="Todo lo que necesitas para ganar con tu dinero.">Everything you need to win with money.</h2>
-    <p class="section-sub" data-en="Fintor combines AI coaching with real tools to help you budget, invest, and build lasting wealth." data-es="Fintor combina coaching con IA y herramientas reales para ayudarte a presupuestar, invertir y construir riqueza duradera.">Fintor combines AI coaching with real tools to help you budget, invest, and build lasting wealth.</p>
-  </div>
-  <div class="features-grid">
-    <div class="feat-card blue fade-up">
-      <div class="feat-icon">🌐</div>
-      <div class="feat-title" data-en="Fully Bilingual" data-es="100% Bilingüe">Fully Bilingual</div>
-      <p class="feat-text" data-en="The only AI finance app built natively in English and Spanish. Fintor speaks your language — literally." data-es="La única app de finanzas con IA construida nativamente en inglés y español. Fintor habla tu idioma — literalmente.">The only AI finance app built natively in English and Spanish. Fintor speaks your language — literally.</p>
-    </div>
-    <div class="feat-card fade-up">
-      <div class="feat-icon">🤖</div>
-      <div class="feat-title" data-en="AI Financial Advisor" data-es="Asesor Financiero IA">AI Financial Advisor</div>
-      <p class="feat-text" data-en="Ask anything. Get personalized advice based on your real goals and situation — not generic tips." data-es="Pregunta lo que quieras. Obtén consejos personalizados basados en tus metas reales — no consejos genéricos.">Ask anything. Get personalized advice based on your real goals and situation — not generic tips.</p>
-    </div>
-    <div class="feat-card fade-up">
-      <div class="feat-icon">🔥</div>
-      <div class="feat-title" data-en="Daily Streak System" data-es="Racha Diaria">Daily Streak System</div>
-      <p class="feat-text" data-en="Financial wellness is a habit. Fintor gamifies your progress with daily streaks, actions, and reminders." data-es="La salud financiera es un hábito. Fintor gamifica tu progreso con rachas diarias, acciones y recordatorios.">Financial wellness is a habit. Fintor gamifies your progress with daily streaks, actions, and reminders.</p>
-    </div>
-    <div class="feat-card fade-up">
-      <div class="feat-icon">📊</div>
-      <div class="feat-title" data-en="Portfolio Tracking" data-es="Rastreo de Portafolio">Portfolio Tracking</div>
-      <p class="feat-text" data-en="Real-time stock prices, asset allocation charts, and AI insights — all in one clean dashboard." data-es="Precios en tiempo real, gráficas de activos e insights de IA — todo en un panel limpio.">Real-time stock prices, asset allocation charts, and AI insights — all in one clean dashboard.</p>
-    </div>
-    <div class="feat-card fade-up">
-      <div class="feat-icon">💰</div>
-      <div class="feat-title" data-en="AI Budget Plan" data-es="Plan de Presupuesto IA">AI Budget Plan</div>
-      <p class="feat-text" data-en="Your personalized financial plan with income, goals, and spending habits all mapped out automatically." data-es="Tu plan financiero personalizado con ingresos, metas y hábitos de gasto mapeados automáticamente.">Your personalized financial plan with income, goals, and spending habits all mapped out automatically.</p>
-    </div>
-    <div class="feat-card fade-up">
-      <div class="feat-icon">🎯</div>
-      <div class="feat-title" data-en="Money Score" data-es="Puntuación de Dinero">Money Score</div>
-      <p class="feat-text" data-en="A single score showing exactly how healthy your finances are today — and what to do to improve it." data-es="Una sola puntuación que muestra qué tan saludables están tus finanzas hoy — y qué hacer para mejorarla.">A single score showing exactly how healthy your finances are today — and what to do to improve it.</p>
     </div>
   </div>
 </section>
 
-<!-- COMPARE -->
-<div class="compare-section" id="compare">
-  <div class="compare-inner">
-    <div class="fade-up">
-      <span class="section-tag">✦ <span data-en="Compare" data-es="Comparar">Compare</span></span>
-      <h2 class="section-title" data-en="Built different." data-es="Hecho diferente.">Built different.</h2>
-      <p class="section-sub" data-en="See how Fintor stacks up against the apps everyone else is using." data-es="Mira cómo Fintor se compara con las apps que todos usan.">See how Fintor stacks up against the apps everyone else is using.</p>
+<!-- FEATURES -->
+<section id="features">
+  <div class="fade-in">
+    <span class="section-tag" data-en="Features" data-es="Funciones">Features</span>
+    <h2 class="section-title" data-en="Everything your bank<br>won't tell you." data-es="Todo lo que tu banco<br>no te dirá.">Everything your bank<br>won't tell you.</h2>
+    <p class="section-sub" data-en="Fintor combines AI coaching, real market data, and daily habits to help you actually build wealth — not just track it." data-es="Fintor combina coaching de IA, datos del mercado real y hábitos diarios para ayudarte a construir riqueza de verdad.">Fintor combines AI coaching, real market data, and daily habits to help you actually build wealth — not just track it.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card fade-in">
+      <div class="feature-icon">🤖</div>
+      <div class="feature-title" data-en="AI Financial Advisor" data-es="Asesor Financiero IA">AI Financial Advisor</div>
+      <p class="feature-text" data-en="Ask anything about your money. Fintor gives personalized, real-time advice based on your actual financial situation — not generic tips." data-es="Pregunta lo que quieras sobre tu dinero. Fintor da consejos personalizados y en tiempo real basados en tu situación financiera real.">Ask anything about your money. Fintor gives personalized, real-time advice based on your actual financial situation — not generic tips.</p>
     </div>
-    <div class="compare-table-wrap fade-up">
-      <table>
+    <div class="feature-card featured fade-in">
+      <div class="feature-icon">🌐</div>
+      <div class="feature-title" data-en="Fully Bilingual" data-es="100% Bilingüe">Fully Bilingual</div>
+      <p class="feature-text" data-en="The only AI finance app that works in both English and Spanish. Built for bilingual families, first-gen students, and the 42M+ Spanish speakers in the US." data-es="La única app de finanzas con IA que funciona en inglés y español. Para familias bilingües, estudiantes de primera generación y los 42M+ hispanohablantes en EE.UU.">The only AI finance app that works in both English and Spanish. Built for bilingual families, first-gen students, and the 42M+ Spanish speakers in the US.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <div class="feature-icon">📋</div>
+      <div class="feature-title" data-en="AI-Built Financial Plan" data-es="Plan Financiero con IA">AI-Built Financial Plan</div>
+      <p class="feature-text" data-en="A full 7-section plan covering your net worth, cash flow, debt strategy, investment priorities, retirement, and monthly action steps — built by AI around your goals." data-es="Un plan completo de 7 secciones que cubre tu patrimonio, flujo de caja, deudas, inversiones, jubilación y pasos de acción mensuales — construido por IA en torno a tus metas.">A full 7-section plan covering your net worth, cash flow, debt strategy, investment priorities, retirement, and monthly action steps — built by AI around your goals.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <div class="feature-icon">🔥</div>
+      <div class="feature-title" data-en="Daily Streak System" data-es="Sistema de Racha Diaria">Daily Streak System</div>
+      <p class="feature-text" data-en="Financial wellness is a habit. Fintor gamifies your progress with daily streaks, action items, and smart reminders to keep you consistent." data-es="La salud financiera es un hábito. Fintor gamifica tu progreso con rachas diarias, acciones y recordatorios inteligentes.">Financial wellness is a habit. Fintor gamifies your progress with daily streaks, action items, and smart reminders to keep you consistent.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title" data-en="Live Portfolio Tracking" data-es="Portafolio en Tiempo Real">Live Portfolio Tracking</div>
+      <p class="feature-text" data-en="Real-time stock prices, portfolio performance, and AI-powered investment insights — all in one clean dashboard." data-es="Precios de acciones en tiempo real, rendimiento del portafolio e insights de inversión con IA — todo en un panel limpio.">Real-time stock prices, portfolio performance, and AI-powered investment insights — all in one clean dashboard.</p>
+    </div>
+    <div class="feature-card fade-in">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-title" data-en="Money Score" data-es="Puntuación de Dinero">Money Score</div>
+      <p class="feature-text" data-en="A single score that shows exactly how healthy your finances are today — and the specific actions to take to improve it." data-es="Una puntuación que muestra exactamente qué tan saludables están tus finanzas hoy — y qué acciones específicas tomar para mejorarla.">A single score that shows exactly how healthy your finances are today — and the specific actions to take to improve it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare" style="background: var(--gray-light); max-width: 100%; padding: 100px 48px;">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="fade-in">
+      <span class="section-tag" data-en="Compare" data-es="Comparar">Compare</span>
+      <h2 class="section-title" data-en="Why Fintor wins." data-es="Por qué Fintor gana.">Why Fintor wins.</h2>
+      <p class="section-sub" data-en="See how we stack up against the apps everyone is using — and where we go further." data-es="Mira cómo nos comparamos con las apps que todos usan — y dónde vamos más lejos.">See how we stack up against the apps everyone is using — and where we go further.</p>
+    </div>
+    <div class="comparison-wrap fade-in" style="margin-top:48px;">
+      <table class="comparison-table">
         <thead>
           <tr>
             <th data-en="Feature" data-es="Función">Feature</th>
-            <th class="col-f">Fintor</th>
+            <th class="highlight">Fintor</th>
             <th>Monarch Money</th>
             <th>Rocket Money</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td data-en="AI Financial Advisor" data-es="Asesor Financiero IA">AI Financial Advisor</td><td class="col-f"><span class="chk">✓</span> Personalized</td><td><span class="par">Limited</span></td><td><span class="crs">✗</span></td></tr>
-          <tr><td data-en="Full Spanish Support" data-es="Soporte en Español">Full Spanish Support</td><td class="col-f"><span class="chk">✓</span> Native</td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td></tr>
-          <tr><td data-en="Daily Streak & Coaching" data-es="Racha y Coaching">Daily Streak & Coaching</td><td class="col-f"><span class="chk">✓</span></td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td></tr>
-          <tr><td data-en="Money Score" data-es="Puntuación de Dinero">Money Score</td><td class="col-f"><span class="chk">✓</span></td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td></tr>
-          <tr><td data-en="Portfolio Tracking" data-es="Rastreo de Portafolio">Portfolio Tracking</td><td class="col-f"><span class="chk">✓</span></td><td><span class="chk">✓</span></td><td><span class="par">Basic</span></td></tr>
-          <tr><td data-en="Free to Start" data-es="Gratis para Empezar">Free to Start</td><td class="col-f"><span class="chk">✓</span></td><td><span class="crs">✗</span> $14.99/mo</td><td><span class="chk">✓</span> Limited</td></tr>
-          <tr><td data-en="Built for Gen Z" data-es="Hecho para Gen Z">Built for Gen Z</td><td class="col-f"><span class="chk">✓</span></td><td><span class="crs">✗</span></td><td><span class="crs">✗</span></td></tr>
-          <tr><td data-en="Pro Price" data-es="Precio Pro">Pro Price</td><td class="col-f" style="font-weight:800;font-size:15px;">$9.99/mo</td><td>$14.99/mo</td><td>$7–14/mo</td></tr>
+          <tr><td data-en="AI Financial Advisor" data-es="Asesor Financiero IA">AI Financial Advisor</td><td class="highlight"><span class="check">✓</span> Personalized</td><td><span class="partial">Limited</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="AI-Built Financial Plan" data-es="Plan Financiero con IA">AI-Built Financial Plan</td><td class="highlight"><span class="check">✓</span> 7 Sections</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="Full Spanish Support" data-es="Soporte en Español">Full Spanish Support</td><td class="highlight"><span class="check">✓</span> Native</td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="Daily Streak & Coaching" data-es="Racha Diaria y Coaching">Daily Streak & Coaching</td><td class="highlight"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="Money Score" data-es="Puntuación de Dinero">Money Score</td><td class="highlight"><span class="check">✓</span></td><td><span class="cross">✗</span></td><td><span class="cross">✗</span></td></tr>
+          <tr><td data-en="Live Portfolio Tracking" data-es="Portafolio en Tiempo Real">Live Portfolio Tracking</td><td class="highlight"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="partial">Basic</span></td></tr>
+          <tr><td data-en="Free to Start" data-es="Gratis para Empezar">Free to Start</td><td class="highlight"><span class="check">✓</span></td><td><span class="cross">✗</span> $14.99/mo</td><td><span class="check">✓</span> Limited</td></tr>
+          <tr><td data-en="Pro Price" data-es="Precio Pro">Pro Price</td><td class="highlight" style="font-family:'Outfit',sans-serif;font-weight:800;font-size:16px;">$9.99/mo</td><td>$14.99/mo</td><td>$7–14/mo</td></tr>
         </tbody>
       </table>
     </div>
   </div>
-</div>
+</section>
 
 <!-- WAITLIST -->
-<div class="waitlist-section" id="waitlist">
-  <div class="waitlist-card fade-up">
-    <span class="section-tag">✦ <span data-en="Early Access" data-es="Acceso Anticipado">Early Access</span></span>
-    <h2 class="section-title" data-en="Get in early." data-es="Entra temprano.">Get in early.</h2>
-    <p class="section-sub" data-en="Join the waitlist and be first to access Fintor when we launch on the App Store. No spam, ever." data-es="Únete a la lista y sé el primero en acceder a Fintor cuando lancemos en el App Store. Sin spam, nunca.">Join the waitlist and be first to access Fintor when we launch on the App Store. No spam, ever.</p>
+<div id="waitlist" style="padding: 0;">
+  <div class="waitlist-section fade-in">
+    <span class="section-tag" data-en="Early Access" data-es="Acceso Anticipado">Early Access</span>
+    <h2 class="section-title" data-en="Be first. Build wealth." data-es="Sé el primero. Construye riqueza.">Be first. Build wealth.</h2>
+    <p class="section-sub" data-en="Join the waitlist and get early access to Fintor when we launch on the App Store. No spam — just your spot in line." data-es="Únete a la lista de espera y obtén acceso anticipado a Fintor cuando lancemos en el App Store. Sin spam — solo tu lugar en la fila.">Join the waitlist and get early access to Fintor when we launch on the App Store. No spam — just your spot in line.</p>
     <div class="waitlist-form">
-      <input type="email" class="waitlist-input" id="waitlistEmail" placeholder="your@email.com" />
-      <button class="waitlist-btn" onclick="submitWaitlist()" data-en="Join Waitlist" data-es="Únete">Join Waitlist</button>
+      <input type="email" class="waitlist-input" id="emailInput" placeholder="your@email.com" />
+      <button class="waitlist-btn" onclick="submitWaitlist()" data-en="Get Early Access" data-es="Obtener Acceso">Get Early Access</button>
     </div>
-    <div class="waitlist-success" id="waitlistSuccess">✓ <span data-en="You're on the list! We'll reach out soon." data-es="¡Estás en la lista! Te contactaremos pronto.">You're on the list! We'll reach out soon.</span></div>
-    <p class="waitlist-note" data-en="By joining you agree to receive updates from Fintor. Unsubscribe anytime." data-es="Al unirte aceptas recibir actualizaciones de Fintor. Cancela cuando quieras.">By joining you agree to receive updates from Fintor. Unsubscribe anytime.</p>
+    <div class="waitlist-success" id="waitlistSuccess">✓ <span data-en="You're on the list! We'll be in touch." data-es="¡Estás en la lista! Te contactaremos.">You're on the list! We'll be in touch.</span></div>
+    <p class="waitlist-note" data-en="By joining, you agree to receive updates from Fintor. We respect your privacy." data-es="Al unirte, aceptas recibir actualizaciones de Fintor. Respetamos tu privacidad.">By joining, you agree to receive updates from Fintor. We respect your privacy.</p>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><div class="footer-logo-icon">F</div><span class="footer-logo-text">Fintor</span></div>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="3,17 8,11 13,14 21,5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="17,5 21,5 21,9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="footer-logo-text">Fintor</span>
+  </div>
   <ul class="footer-links">
     <li><a href="mailto:hello@getfintor.com">hello@getfintor.com</a></li>
-    <li><a href="#" data-en="Privacy" data-es="Privacidad">Privacy</a></li>
+    <li><a href="#" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a></li>
     <li><a href="#" data-en="Terms" data-es="Términos">Terms</a></li>
   </ul>
-  <p class="footer-disc" data-en="Fintor is not a licensed financial advisor. All content is for educational purposes only and should not be considered financial advice. Always consult a qualified financial professional before making investment decisions. © 2026 Fintor. All rights reserved." data-es="Fintor no es un asesor financiero con licencia. Todo el contenido es solo para fines educativos. Siempre consulta a un profesional financiero calificado antes de tomar decisiones de inversión. © 2026 Fintor. Todos los derechos reservados.">Fintor is not a licensed financial advisor. All content is for educational purposes only and should not be considered financial advice. Always consult a qualified financial professional before making investment decisions. © 2026 Fintor. All rights reserved.</p>
+  <p class="footer-disclaimer" data-en="Fintor is not a licensed financial advisor. Information provided is for educational purposes only and should not be considered financial advice. Always consult a qualified financial professional before making investment decisions. © 2026 Fintor. All rights reserved." data-es="Fintor no es un asesor financiero con licencia. La información proporcionada es solo para fines educativos y no debe considerarse asesoramiento financiero. Siempre consulte a un profesional financiero calificado antes de tomar decisiones de inversión. © 2026 Fintor. Todos los derechos reservados.">
+    Fintor is not a licensed financial advisor. Information provided is for educational purposes only and should not be considered financial advice. Always consult a qualified financial professional before making investment decisions. © 2026 Fintor. All rights reserved.
+  </p>
 </footer>
 
 <script>
-let lang = 'en';
-const pt = {
-  en: { greeting:'Good evening, Jackson 👋', streakLbl:'day streak', streakSub:'Keep it up!', insightLbl:"💡 TODAY'S INSIGHT · AI", insightTxt:'Automate emergency fund contributions to avoid spending that money on non-essential purchases.', actionLbl:'✦ TODAY\'S ACTION · AI', actionTxt:'Open high-yield savings account and automatically transfer $1,500 monthly until reaching $7,500 emergency fund.', tabHome:'Home', tabBudget:'Budget', tabAdvisor:'Advisor', tabPortfolio:'Portfolio' },
-  es: { greeting:'Buenas noches, Jackson 👋', streakLbl:'días de racha', streakSub:'¡Sigue así!', insightLbl:'💡 CONSEJO DE HOY · IA', insightTxt:'Automatiza las aportaciones a tu fondo de emergencia para evitar gastar ese dinero en compras no esenciales.', actionLbl:'✦ ACCIÓN DE HOY · IA', actionTxt:'Abre una cuenta de ahorros de alto rendimiento y transfiere $1,500 mensuales hasta alcanzar $7,500.', tabHome:'Inicio', tabBudget:'Presupuesto', tabAdvisor:'Asesor', tabPortfolio:'Portafolio' }
-};
+  let lang = 'en';
+  const phoneContent = {
+    en: { greeting:'Good morning 👋', balanceLabel:'Net Worth', savingsLabel:'Savings', streakCard:'🔥 7 Day Streak', streakLabel:'Keep it up!', action:"Today's action: Review your budget", tipLabel:'AI Tip', tipText:"You're on track to save $400 this month. Consider moving $100 to your Roth IRA.", tabHome:'Home', tabBudget:'Budget', tabAdvisor:'Advisor', tabPortfolio:'Portfolio' },
+    es: { greeting:'Buenos días 👋', balanceLabel:'Patrimonio Neto', savingsLabel:'Ahorros', streakCard:'🔥 Racha de 7 Días', streakLabel:'¡Sigue así!', action:'Acción de hoy: Revisa tu presupuesto', tipLabel:'Consejo IA', tipText:'Vas bien para ahorrar $400 este mes. Considera mover $100 a tu Roth IRA.', tabHome:'Inicio', tabBudget:'Presupuesto', tabAdvisor:'Asesor', tabPortfolio:'Portafolio' }
+  };
 
-function toggleLang() {
-  lang = lang === 'en' ? 'es' : 'en';
-  document.getElementById('langBtn').textContent = lang === 'en' ? '🌐 Español' : '🌐 English';
-  document.querySelectorAll('[data-en]').forEach(el => { const v = el.getAttribute('data-'+lang); if(v) el.innerHTML = v; });
-  const p = pt[lang];
-  document.getElementById('phoneGreeting').textContent = p.greeting;
-  document.getElementById('streakLbl').textContent = p.streakLbl;
-  document.getElementById('streakSub').textContent = p.streakSub;
-  document.getElementById('insightLbl').textContent = p.insightLbl;
-  document.getElementById('insightTxt').textContent = p.insightTxt;
-  document.getElementById('actionLbl').textContent = p.actionLbl;
-  document.getElementById('actionTxt').textContent = p.actionTxt;
-  document.getElementById('tabHome').textContent = p.tabHome;
-  document.getElementById('tabBudget').textContent = p.tabBudget;
-  document.getElementById('tabAdvisor').textContent = p.tabAdvisor;
-  document.getElementById('tabPortfolio').textContent = p.tabPortfolio;
-}
+  function toggleLang() {
+    lang = lang === 'en' ? 'es' : 'en';
+    document.getElementById('langBtn').textContent = lang === 'en' ? '🌐 Español' : '🌐 English';
+    document.querySelectorAll('[data-en]').forEach(el => { const v = el.getAttribute('data-'+lang); if(v) el.innerHTML = v; });
+    const p = phoneContent[lang];
+    document.getElementById('ps-greeting').textContent = p.greeting;
+    document.getElementById('ps-balance-label').textContent = p.balanceLabel;
+    document.getElementById('ps-savings-label').textContent = p.savingsLabel;
+    document.getElementById('ps-streak-card').textContent = p.streakCard;
+    document.getElementById('ps-streak-label').textContent = p.streakLabel;
+    document.getElementById('ps-action').textContent = p.action;
+    document.getElementById('ps-tip-label').textContent = p.tipLabel;
+    document.getElementById('ps-tip-text').textContent = p.tipText;
+    document.getElementById('tab-home').textContent = p.tabHome;
+    document.getElementById('tab-budget').textContent = p.tabBudget;
+    document.getElementById('tab-advisor').textContent = p.tabAdvisor;
+    document.getElementById('tab-portfolio').textContent = p.tabPortfolio;
+  }
 
-function submitHero() {
-  const e = document.getElementById('heroEmail').value;
-  if (!e || !e.includes('@')) { document.getElementById('heroEmail').style.borderColor='#EF4444'; return; }
-  document.querySelector('.hero-form').style.display = 'none';
-  document.getElementById('heroSuccess').style.display = 'block';
-}
+  function submitWaitlist() {
+    const email = document.getElementById('emailInput').value;
+    if (!email || !email.includes('@')) { document.getElementById('emailInput').style.borderColor='#E5362A'; return; }
+    document.querySelector('.waitlist-form').style.display = 'none';
+    document.getElementById('waitlistSuccess').style.display = 'block';
+    console.log('Waitlist signup:', email);
+  }
 
-function submitWaitlist() {
-  const e = document.getElementById('waitlistEmail').value;
-  if (!e || !e.includes('@')) { document.getElementById('waitlistEmail').style.borderColor='#EF4444'; return; }
-  document.querySelector('.waitlist-form').style.display = 'none';
-  document.getElementById('waitlistSuccess').style.display = 'block';
-}
-
-const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  const observer = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
