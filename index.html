@@ -461,12 +461,31 @@
     document.getElementById('tab-portfolio').textContent = p.tabPortfolio;
   }
 
-  function submitWaitlist() {
+  async function submitWaitlist() {
     const email = document.getElementById('emailInput').value;
-    if (!email || !email.includes('@')) { document.getElementById('emailInput').style.borderColor='#E5362A'; return; }
-    document.querySelector('.waitlist-form').style.display = 'none';
-    document.getElementById('waitlistSuccess').style.display = 'block';
-    console.log('Waitlist signup:', email);
+    if (!email || !email.includes('@')) {
+      document.getElementById('emailInput').style.borderColor = '#E5362A';
+      return;
+    }
+    const btn = document.querySelector('.waitlist-btn');
+    btn.textContent = '...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://fintor-production.up.railway.app/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, language: lang })
+      });
+      if (res.status === 409) {
+        document.getElementById('waitlistSuccess').innerHTML = "✓ You're already on the list!";
+      }
+      document.querySelector('.waitlist-form').style.display = 'none';
+      document.getElementById('waitlistSuccess').style.display = 'block';
+    } catch (e) {
+      btn.textContent = lang === 'es' ? 'Únete' : 'Get Early Access';
+      btn.disabled = false;
+      document.getElementById('emailInput').style.borderColor = '#E5362A';
+    }
   }
 
   const observer = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
