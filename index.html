@@ -499,7 +499,7 @@
     btn.textContent = '...';
     btn.disabled = true;
     try {
-      const res = await fetch('https://fintor-production.up.railway.app/waitlist', {
+      const res = await fetch('https://fintor-production-1198.up.railway.app/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, language: lang })
